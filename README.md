@@ -1,1 +1,1 @@
-# Scallop Bridge Frontend
+# Universe Bridge Frontend

@@ -50,10 +50,7 @@ export const approve = async (amount, tokenAddr,currentNetwork, chainId, wallet)
     return 1;
   }
 
-  const tx = await token.approve(handlerAddr, amountInWei, {
-    gasPrice: gasPrice,
-    gasLimit: gasLimit,
-  });
+  const tx = await token.approve(handlerAddr, amountInWei);
 
   // window.alert(`Transaction submitted!\n Transaction hash: ${tx.hash}`);
   await new Promise((resolve) => {
@@ -196,14 +193,18 @@ export const depositScallop = async (
     dest, // destination chain id
     resourceId,
     data,
-    { gasPrice: gasPrice, gasLimit: gasLimit },
+    // { gasPrice: gasPrice, gasLimit: gasLimit },
   );
 
   // window.alert(`Transaction submitted!\n Transaction hash: ${tx.hash}`);
-  notification.info({
-    message: "pending",
-    description:`Transaction submitted!\n Transaction hash: ${tx.hash}`
-  }) 
+  await new Promise((resolve) => {
+    notification.info({
+      message: "pending",
+      description:`Transaction submitted!\n Transaction hash: ${tx.hash}`,
+      onClose: resolve, // Resolve the Promise when the notification is closed
+    }) 
+})
+
   const res = await tx.wait();
   return res.status;
 };

@@ -4,7 +4,7 @@ import Head from 'next/head';
 
 import Page from '../components/Page';
 
-import "antd/dist/antd.css";
+import 'antd/dist/antd.css';
 import 'css/global.css';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import 'slick-carousel/slick/slick.css';
@@ -20,7 +20,7 @@ export default function App({ Component, pageProps }) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <title>Scallop Bridge</title>
+        <title>Universe Bridge</title>
       </Head>
       <Page>
         <Component {...pageProps} />
